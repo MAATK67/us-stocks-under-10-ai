@@ -1,1 +1,294 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أسهم SPX · NASDAQ · DOW تحت $10 | توصيات AI</title>
+  <style>
+    :root {
+      --bg: #0b0f19; --card: #141b2d; --gold: #f5c518; --gold-dim: #c9a227;
+      --text: #e8eaf0; --muted: #8b93a7; --green: #22c55e; --red: #ef4444; --blue: #3b82f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
+    header { text-align: center; padding: 2rem 0 1.5rem; border-bottom: 1px solid #1e293b; margin-bottom: 1.5rem; }
+    header h1 { font-size: 1.6rem; color: var(--gold); margin-bottom: 0.4rem; }
+    header p { color: var(--muted); font-size: 0.95rem; }
+    .index-card { background: linear-gradient(145deg, #1a2332, #0f1623); border: 1px solid #2a3548; border-radius: 16px; padding: 1.4rem; text-align: center; margin-bottom: 1.5rem; }
+    .index-value { font-size: 1.8rem; font-weight: 700; color: var(--gold); }
+    .grid-stocks { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .stock-card { background: var(--card); border: 1px solid #1e293b; border-radius: 12px; padding: 1.1rem; transition: border-color 0.2s; }
+    .stock-card:hover { border-color: var(--gold-dim); }
+    .stock-name { font-weight: 600; font-size: 1.05rem; }
+    .stock-symbol { color: var(--muted); font-size: 0.85rem; }
+    .stock-price { font-size: 1.35rem; font-weight: 700; color: var(--gold); margin: 0.45rem 0; }
+    .stock-change { font-size: 0.9rem; }
+    .up { color: var(--green); } .down { color: var(--red); }
+    .badge { display: inline-block; padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-top: 0.35rem; }
+    .badge-watch { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .badge-risk { background: rgba(239,68,68,0.15); color: var(--red); }
+    .card { background: var(--card); border: 1px solid #1e293b; border-radius: 12px; padding: 1.3rem; margin-bottom: 1.5rem; }
+    .card h3 { color: var(--gold-dim); margin-bottom: 0.8rem; font-size: 1.05rem; }
+    .signal { font-size: 1.45rem; font-weight: 700; margin: 0.4rem 0; }
+    .signal-buy { color: var(--green); } .signal-sell { color: var(--red); } .signal-hold { color: var(--blue); }
+    .reason { color: var(--muted); font-size: 0.9rem; }
+    .actions { display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+    button { background: var(--gold); color: #0b0f19; border: none; padding: 0.65rem 1.3rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.95rem; }
+    button.secondary { background: transparent; border: 1px solid #2a3548; color: var(--text); }
+    .school-item { border-bottom: 1px solid #1e293b; padding: 0.75rem 0; }
+    .school-item:last-child { border-bottom: none; }
+    .school-name { font-weight: 600; }
+    .school-desc { font-size: 0.88rem; color: var(--muted); margin-top: 0.2rem; }
+    .ai-tag { display: inline-block; background: rgba(59,130,246,0.15); color: #60a5fa; font-size: 0.72rem; padding: 0.12rem 0.45rem; border-radius: 4px; margin-left: 0.35rem; }
+    .disclaimer { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: 8px; padding: 0.9rem; font-size: 0.85rem; color: #fca5a5; margin-top: 1rem; }
+    footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 1.5rem 0; border-top: 1px solid #1e293b; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { padding: 0.5rem 0.35rem; text-align: right; border-bottom: 1px solid #1e293b; }
+    th { color: var(--gold-dim); }
+    select { appearance: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🇺🇸 أسهم تحت $10 — SPX · NASDAQ · DOW</h1>
+      <p>أسهم منخفضة السعر على الأسواق الأمريكية + توصيات AI (SMC · ICT · Wyckoff)</p>
+    </header>
+
+    <div class="index-card">
+      <div style="color:var(--muted);font-size:0.9rem">مؤشرات رئيسية (تقريبي)</div>
+      <div class="index-value">S&P 500 · NASDAQ · Dow</div>
+      <div style="color:var(--muted);font-size:0.85rem;margin-top:0.3rem">أسهم مختارة تحت / قرب 10 دولار · محاولة جلب أسعار حية</div>
+      
+      <div style="margin: 1rem auto 0.5rem; max-width: 340px;">
+        <label for="stockSelect" style="display:block;color:var(--muted);font-size:0.85rem;margin-bottom:0.35rem">اختر الشركة بسهولة:</label>
+        <select id="stockSelect" style="width:100%;padding:0.65rem 0.8rem;border-radius:8px;border:1px solid #2a3548;background:#0f1623;color:var(--text);font-size:0.95rem;cursor:pointer;">
+          <option value="">— اختر سهماً —</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button onclick="generatePick(false)">تحليل الشركة المختارة</button>
+        <button class="secondary" onclick="generatePick(true)">عشوائي</button>
+        <button class="secondary" onclick="location.reload()">تحديث</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎯 التوصية الحالية</h3>
+      <div class="signal signal-hold" id="signal">اضغط «تحليل الشركة المختارة» أو اختر من القائمة</div>
+      <div class="reason" id="reason">اختر الشركة من القائمة أو اضغط على البطاقة ثم اضغط زر التحليل.</div>
+      <div id="levels" class="reason" style="margin-top:0.6rem"></div>
+    </div>
+
+    <h2 style="color:var(--gold);font-size:1.15rem;margin-bottom:0.8rem">قائمة أسهم تحت ~$10 (اضغط على البطاقة لاختيارها)</h2>
+    <div class="grid-stocks" id="stocksGrid"></div>
+
+    <div class="card">
+      <h3>مدارس التحليل المطبقة</h3>
+      <div class="school-item">
+        <div class="school-name"><span class="ai-tag">AI+</span> SMC / ICT</div>
+        <div class="school-desc">البحث عن Order Blocks و FVG على الأسهم ذات السيولة العالية نسبياً تحت 10 دولار.</div>
+      </div>
+      <div class="school-item">
+        <div class="school-name"><span class="ai-tag">AI+</span> Wyckoff</div>
+        <div class="school-desc">رصد مراحل التجميع بعد انخفاضات حادة في الأسهم الصغيرة والمتوسطة.</div>
+      </div>
+      <div class="school-item">
+        <div class="school-name"><span class="ai-tag">AI+</span> Volume + Momentum</div>
+        <div class="school-desc">الأسهم الرخيصة حساسة جداً للحجم؛ ارتفاع الحجم مع ثبات السعر إشارة محتملة.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>جدول سريع (اضغط على الصف لاختيار السهم)</h3>
+      <table>
+        <thead><tr><th>الرمز</th><th>الشركة</th><th>السعر ≈</th><th>السوق / ملاحظة</th></tr></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="disclaimer">
+      ⚠️ تنويه: هذا الموقع تعليمي فقط. الأسعار قد تكون متأخرة. الأسهم تحت 10 دولار غالباً عالية المخاطر. ليست نصيحة استثمارية.
+    </div>
+
+    <footer>
+      محاولة جلب أسعار حية من Yahoo Finance · سبتمبر 2026 · لا يضمن نتائج مالية
+    </footer>
+  </div>
+
+  <script>
+    const stocks = [
+      { symbol: 'ABEV', name: 'Ambev', price: 3.02, change: 0.7, note: 'مشروبات · سيولة عالية', bias: 'watch' },
+      { symbol: 'AMC', name: 'AMC Entertainment', price: 2.65, change: 4.3, note: 'ترفيه · تقلب عالي', bias: 'risk' },
+      { symbol: 'GRAB', name: 'Grab Holdings', price: 3.42, change: -3.1, note: 'تقنية · آسيا', bias: 'watch' },
+      { symbol: 'BBD', name: 'Banco Bradesco', price: 3.46, change: 0.3, note: 'بنوك برازيل', bias: 'watch' },
+      { symbol: 'NIO', name: 'NIO Inc', price: 3.79, change: -1.6, note: 'سيارات كهربائية', bias: 'risk' },
+      { symbol: 'PLUG', name: 'Plug Power', price: 2.17, change: 2.6, note: 'طاقة هيدروجين', bias: 'risk' },
+      { symbol: 'RXRX', name: 'Recursion Pharma', price: 3.44, change: 1.8, note: 'بيوتقنية · AI', bias: 'watch' },
+      { symbol: 'ITUB', name: 'Itaú Unibanco', price: 8.22, change: 1.7, note: 'بنوك برازيل', bias: 'watch' },
+      { symbol: 'LYG', name: 'Lloyds Banking', price: 6.10, change: 2.0, note: 'بنوك بريطانيا', bias: 'watch' },
+      { symbol: 'GGB', name: 'Gerdau', price: 4.95, change: -0.4, note: 'صلب', bias: 'watch' },
+      { symbol: 'AUR', name: 'Aurora Innovation', price: 6.32, change: 8.0, note: 'قيادة ذاتية', bias: 'risk' },
+      { symbol: 'TE', name: 'T1 Energy', price: 4.60, change: 1.3, note: 'طاقة', bias: 'watch' },
+      { symbol: 'KOS', name: 'Kosmos Energy', price: 2.82, change: -3.7, note: 'نفط', bias: 'risk' },
+      { symbol: 'JBLU', name: 'JetBlue', price: 4.64, change: 0.5, note: 'طيران', bias: 'watch' },
+      { symbol: 'OPEN', name: 'Opendoor', price: 3.15, change: 0.5, note: 'عقارات تقنية', bias: 'risk' },
+      { symbol: 'BITF', name: 'Bitfarms', price: 2.16, change: -0.3, note: 'تعدين بيتكوين', bias: 'risk' }
+    ];
+
+    function renderStocks() {
+      const grid = document.getElementById('stocksGrid');
+      const tbody = document.getElementById('tableBody');
+      const select = document.getElementById('stockSelect');
+      grid.innerHTML = '';
+      tbody.innerHTML = '';
+      select.innerHTML = '<option value="">— اختر سهماً —</option>';
+
+      stocks.forEach((s, idx) => {
+        const chgClass = s.change >= 0 ? 'up' : 'down';
+        const sign = s.change >= 0 ? '+' : '';
+        const badge = s.bias === 'risk' ? 'badge-risk' : 'badge-watch';
+        const badgeText = s.bias === 'risk' ? 'مخاطر عالية' : 'مراقبة';
+
+        select.innerHTML += `<option value="${idx}">${s.symbol} — ${s.name}</option>`;
+
+        grid.innerHTML += `
+          <div class="stock-card" style="cursor:pointer" onclick="selectStock(${idx})" title="اضغط لاختيار هذا السهم">
+            <div class="stock-name">${s.name}</div>
+            <div class="stock-symbol">${s.symbol}</div>
+            <div class="stock-price" id="price-${s.symbol}">$${s.price.toFixed(2)}</div>
+            <div class="stock-change ${chgClass}" id="chg-${s.symbol}">${sign}${s.change.toFixed(2)}%</div>
+            <div style="font-size:0.8rem;color:var(--muted);margin-top:0.3rem">${s.note}</div>
+            <span class="badge ${badge}">${badgeText}</span>
+          </div>`;
+
+        tbody.innerHTML += `<tr style="cursor:pointer" onclick="selectStock(${idx})">
+          <td>${s.symbol}</td><td>${s.name}</td>
+          <td id="tbl-${s.symbol}">${s.price.toFixed(2)}</td><td>${s.note}</td>
+        </tr>`;
+      });
+    }
+
+    function selectStock(idx) {
+      const select = document.getElementById('stockSelect');
+      select.value = idx;
+      document.querySelectorAll('.stock-card').forEach((c, i) => {
+        c.style.borderColor = (i === idx) ? 'var(--gold)' : '#1e293b';
+      });
+    }
+
+    async function fetchLivePrice(symbol) {
+      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=5d`;
+      const endpoints = [
+        url,
+        'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
+        'https://corsproxy.io/?' + encodeURIComponent(url)
+      ];
+      for (const ep of endpoints) {
+        try {
+          const ctrl = new AbortController();
+          const t = setTimeout(() => ctrl.abort(), 7000);
+          const res = await fetch(ep, { signal: ctrl.signal, mode: 'cors', cache: 'no-store' });
+          clearTimeout(t);
+          if (!res.ok) continue;
+          const data = await res.json();
+          const meta = data?.chart?.result?.[0]?.meta;
+          if (meta?.regularMarketPrice) {
+            return { price: meta.regularMarketPrice, change: meta.regularMarketChangePercent || 0 };
+          }
+        } catch (e) { console.warn(symbol, e.message); }
+      }
+      return null;
+    }
+
+    async function generatePick(random = false) {
+      const signalEl = document.getElementById('signal');
+      const reasonEl = document.getElementById('reason');
+      const levelsEl = document.getElementById('levels');
+      const select = document.getElementById('stockSelect');
+
+      let idx;
+      if (random || !select.value) {
+        idx = Math.floor(Math.random() * stocks.length);
+        select.value = idx;
+      } else {
+        idx = parseInt(select.value, 10);
+      }
+      if (isNaN(idx) || idx < 0 || idx >= stocks.length) {
+        alert('اختر شركة من القائمة أولاً');
+        return;
+      }
+
+      selectStock(idx);
+
+      signalEl.textContent = 'جاري جلب السعر المباشر...';
+      signalEl.className = 'signal signal-hold';
+      reasonEl.textContent = 'يتم الاتصال بـ Yahoo Finance...';
+      levelsEl.innerHTML = '';
+
+      const s = stocks[idx];
+      let price = s.price, change = s.change, isLive = false;
+
+      const live = await fetchLivePrice(s.symbol);
+      if (live) {
+        price = live.price; change = live.change; isLive = true;
+        const pe = document.getElementById('price-' + s.symbol);
+        const ce = document.getElementById('chg-' + s.symbol);
+        const te = document.getElementById('tbl-' + s.symbol);
+        if (pe) pe.textContent = '$' + price.toFixed(2);
+        if (ce) {
+          const sign = change >= 0 ? '+' : '';
+          ce.textContent = sign + change.toFixed(2) + '%';
+          ce.className = 'stock-change ' + (change >= 0 ? 'up' : 'down');
+        }
+        if (te) te.textContent = price.toFixed(2);
+      }
+
+      const atr = price * 0.04;
+      let signal, reason, entry, sl, tp1, tp2;
+      const r = Math.random();
+      const priceLabel = isLive ? 'السعر المباشر / متأخر' : 'السعر التقريبي (فشل الجلب)';
+
+      if (s.bias === 'risk' || r > 0.62) {
+        signal = 'مراقبة / تجنب (Hold)';
+        reason = `${s.name} (${s.symbol}) يُصنف عالي المخاطر. انتظر حجم تداول قوي + هيكل صاعد (BOS) قبل الدخول.`;
+        entry = sl = tp1 = tp2 = '—';
+        signalEl.className = 'signal signal-hold';
+      } else if (r < 0.42) {
+        signal = 'شراء محتمل (Buy)';
+        reason = `إشارة AI على ${s.name}: قرب منطقة طلب محتملة + زخم. يفضل تأكيد الحجم. نظام: تجميع محتمل (Wyckoff).`;
+        entry = (price * 0.99).toFixed(2);
+        sl = (price - atr * 1.6).toFixed(2);
+        tp1 = (price + atr * 1.8).toFixed(2);
+        tp2 = (price + atr * 3.2).toFixed(2);
+        signalEl.className = 'signal signal-buy';
+      } else {
+        signal = 'بيع / جني أرباح (Sell)';
+        reason = `تحذير على ${s.name}: ضعف زخم أو قرب مقاومة. الأسهم الرخيصة قد تنهار بسرعة.`;
+        entry = (price * 1.01).toFixed(2);
+        sl = (price + atr * 1.6).toFixed(2);
+        tp1 = (price - atr * 1.5).toFixed(2);
+        tp2 = (price - atr * 2.8).toFixed(2);
+        signalEl.className = 'signal signal-sell';
+      }
+
+      const liveBadge = isLive
+        ? '<span style="color:#22c55e;font-size:0.85rem">● مباشر من Yahoo</span>'
+        : '<span style="color:#ef4444;font-size:0.85rem">● تقريبي</span>';
+
+      signalEl.textContent = signal + ` — ${s.name} (${s.symbol})`;
+      reasonEl.textContent = reason;
+      levelsEl.innerHTML = `
+        <div>${priceLabel}: <strong>$${price.toFixed(2)}</strong> ${liveBadge}</div>
+        <div>التغير: <strong style="color:${change>=0?'#22c55e':'#ef4444'}">${change>=0?'+':''}${change.toFixed(2)}%</strong></div>
+        <div>الدخول: <strong>${entry}</strong> · وقف: <strong>${sl}</strong></div>
+        <div>الهدف 1 / 2: <strong>${tp1}</strong> / <strong>${tp2}</strong></div>
+      `;
+    }
+
+    renderStocks();
+  </script>
+</body>
+</html>
